@@ -30,7 +30,8 @@ body {
     margin-top: 5em;
     padding: 2em;
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
     background-color: rgb(62, 62, 62);
     border-radius: 30px;
 }

@@ -51,6 +51,10 @@ let mainCarouselImgEl = document.getElementById('mainCarouselImg');
 let listImgContainerEl = document.querySelector('.listImgContainer');
 let imgElements = document.querySelectorAll('.previewContainer');
 
+let startEl = document.getElementById('start');
+let stopEl = document.getElementById('stop');
+let reverseEl = document.getElementById('reverse');
+
 let index = 0;
 
 mainCarouselImgEl.src = images[0].image;
@@ -64,8 +68,6 @@ titleEl.textContent = images[index].title;
 textEl.textContent = images[index].text;
 
 let autoplayInterval;
-
-startAutoplay()
 
 downArrowEl.addEventListener('click', function () {
 
@@ -134,4 +136,24 @@ function startAutoplay() {
 
 function stopAutoplay() {
     clearInterval(autoplayInterval);
-  }
+}
+
+/* 
+BONUS 3:
+Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.  
+*/
+
+startEl.addEventListener('click', () => {
+
+        startAutoplay()
+
+});
+
+stopEl.addEventListener('click', () => {
+
+    stopAutoplay()
+
+});
+
+
+
