@@ -1,62 +1,20 @@
-let carouselImages = [
-    'img/01.webp',
-    'img/02.webp',
-    'img/03.webp',
-    'img/04.webp',
-    'img/05.webp'
-];
-
-// ottieni un riferimento all'elemento HTML che mostra l'immagine principale del carosello
-let mainCarouselImgEl = document.getElementById('mainCarouselImg');
-let listImgContainerEl = document.querySelector('.listImgContainer');
-
-// ottieni i riferimenti agli elementi HTML che rappresentano le frecce del carosello
-let upArrowEl = document.querySelector('.fa-circle-chevron-up');
-let downArrowEl = document.querySelector('.fa-circle-chevron-down');
-
-
-let index = 0;
-
-mainCarouselImgEl.src = carouselImages[index];
-
-let imgElements = document.querySelectorAll('.previewContainer');
-
-imgElements[index].classList.add('active');
-
-downArrowEl.addEventListener('click', function () {
-
-    imgElements[index].classList.remove('active');
-
-    index++;
-
-    if (index > carouselImages.length -1) {
-
-        index = 0;
-
-    } 
-    
-    mainCarouselImgEl.src = carouselImages[index];
-
-    imgElements[index].classList.add('active');
-    
-
-});
-
-upArrowEl.addEventListener('click', function () {
-
-    imgElements[index].classList.remove('active');
-    
-    index--;
- 
-    if (index < 0) {
-
-        index = carouselImages.length - 1;
-
-    }
-
-    mainCarouselImgEl.src = carouselImages[index];
-
-    imgElements[index].classList.add('active');
-    
-    
-});
+/* 
+Dato un array di oggetti letterali con:
+ - url dell’immagine
+ - titolo
+ - descrizione
+Creare un carosello come nella foto allegata.
+Milestone 0:
+Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del markup statico: costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
+Milestone 1:
+Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
+Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
+Milestone 2:
+Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
+BONUS 1:
+Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
+BONUS 2:
+Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+BONUS 3:
+Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay. 
+*/
