@@ -68,6 +68,7 @@ titleEl.textContent = images[index].title;
 textEl.textContent = images[index].text;
 
 let autoplayInterval;
+let reverseInterval;
 
 downArrowEl.addEventListener('click', function () {
 
@@ -143,17 +144,46 @@ BONUS 3:
 Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.  
 */
 
+// Quando l'autoplay viene startato, se il reverse autoplay è attivo viene fermato e viceversa, così da non far sovrapporre il funzionamento delle due funzioni.
 startEl.addEventListener('click', () => {
 
-        startAutoplay()
-
+    stopReverseAutoplay();
+    startAutoplay();
+    
 });
 
 stopEl.addEventListener('click', () => {
 
-    stopAutoplay()
+    stopAutoplay();
+    stopReverseAutoplay();
 
 });
+
+reverseEl.addEventListener('click', () => {
+    
+    stopAutoplay();
+    reverseAutoplay();
+
+
+});
+
+function reverseAutoplay() {
+
+    reverseInterval = setInterval(() => {
+
+        imgElements[index].classList.remove('active');
+        index = (index - 1 + images.length) % images.length;
+        mainCarouselImgEl.src = images[index].image;
+        titleEl.textContent = images[index].title;
+        textEl.textContent = images[index].text;
+        imgElements[index].classList.add('active');
+
+    }, 3000);
+}
+
+function stopReverseAutoplay() {
+    clearInterval(reverseInterval);
+}
 
 
 
