@@ -63,33 +63,41 @@ let textEl = document.getElementById('text');
 titleEl.textContent = images[index].title;
 textEl.textContent = images[index].text;
 
+let autoplayInterval;
+
+startAutoplay()
+
 downArrowEl.addEventListener('click', function () {
+
+    stopAutoplay()
 
     imgElements[index].classList.remove('active');
 
     index++;
-  
-    if (index > images.length -1) {
+
+    if (index > images.length - 1) {
 
         index = 0;
 
-    } 
-    
+    }
+
     mainCarouselImgEl.src = images[index].image;
 
     titleEl.textContent = images[index].title;
     textEl.textContent = images[index].text;
 
     imgElements[index].classList.add('active');
-    
+
 });
 
 upArrowEl.addEventListener('click', function () {
 
+    stopAutoplay()
+
     imgElements[index].classList.remove('active');
-    
+
     index--;
-   
+
     if (index < 0) {
 
         index = images.length - 1;
@@ -102,5 +110,28 @@ upArrowEl.addEventListener('click', function () {
     textEl.textContent = images[index].text;
 
     imgElements[index].classList.add('active');
-    
+
 });
+
+/* 
+BONUS 2:
+Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva. 
+*/
+
+function startAutoplay() {
+
+    autoplayInterval = setInterval(() => {
+
+        imgElements[index].classList.remove('active');
+        index = (index + 1) % images.length;
+        mainCarouselImgEl.src = images[index].image;
+        titleEl.textContent = images[index].title;
+        textEl.textContent = images[index].text;
+        imgElements[index].classList.add('active');
+
+    }, 3000);
+}
+
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
