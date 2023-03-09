@@ -1,0 +1,92 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.low-brightness {
+    filter: brightness(.3);
+}
+
+.active {
+    transform: scale(1.1);
+    border: 1px solid red;
+    box-shadow: 1px 12px 12px 0px rgba(0,0,0,0.8);
+    z-index: 1;
+    filter: brightness(1);
+}
+
+.carouselContainer {
+    height: 600px;
+    margin-top: 5em;
+    padding: 2em;
+    display: flex;
+    gap: 15px;
+    background-color: rgb(62, 62, 62);
+    border-radius: 30px;
+}
+
+.mainImgContainer {
+    width: 80%;
+    height: 100%;
+    position: relative;
+}
+
+.mainImgContainer #mainCarouselImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fa-solid {
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all .2s;
+}
+
+.fa-solid:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.fa-circle-chevron-up {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.fa-circle-chevron-down {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.listImgContainer {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.listImgContainer .previewContainer {
+    width: 100%;
+    height: calc(100% / 5);
+}
+
+.listImgContainer .previewContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
