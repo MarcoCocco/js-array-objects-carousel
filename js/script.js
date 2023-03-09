@@ -18,3 +18,89 @@ Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi)
 BONUS 3:
 Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay. 
 */
+
+const images = [
+
+    {
+        image: 'img/01.webp',
+        title: 'Marvel\'s Spiderman Miles Morale',
+        text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+    }, {
+        image: 'img/02.webp',
+        title: 'Ratchet & Clank: Rift Apart',
+        text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
+    }, {
+        image: 'img/03.webp',
+        title: 'Fortnite',
+        text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+    }, {
+        image: 'img/04.webp',
+        title: 'Stray',
+        text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+    }, {
+        image: 'img/05.webp',
+        title: "Marvel's Avengers",
+        text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+    }
+
+];
+
+let upArrowEl = document.querySelector('.fa-circle-chevron-up');
+let downArrowEl = document.querySelector('.fa-circle-chevron-down');
+let mainCarouselImgEl = document.getElementById('mainCarouselImg');
+let listImgContainerEl = document.querySelector('.listImgContainer');
+let imgElements = document.querySelectorAll('.previewContainer');
+
+let index = 0;
+
+mainCarouselImgEl.src = images[0].image;
+
+imgElements[index].classList.add('active');
+
+let titleEl = document.getElementById('title');
+let textEl = document.getElementById('text');
+
+titleEl.textContent = images[index].title;
+textEl.textContent = images[index].text;
+
+downArrowEl.addEventListener('click', function () {
+
+    imgElements[index].classList.remove('active');
+
+    index++;
+  
+    if (index > images.length -1) {
+
+        index = 0;
+
+    } 
+    
+    mainCarouselImgEl.src = images[index].image;
+
+    titleEl.textContent = images[index].title;
+    textEl.textContent = images[index].text;
+
+    imgElements[index].classList.add('active');
+    
+});
+
+upArrowEl.addEventListener('click', function () {
+
+    imgElements[index].classList.remove('active');
+    
+    index--;
+   
+    if (index < 0) {
+
+        index = images.length - 1;
+
+    }
+
+    mainCarouselImgEl.src = images[index].image;
+
+    titleEl.textContent = images[index].title;
+    textEl.textContent = images[index].text;
+
+    imgElements[index].classList.add('active');
+    
+});
